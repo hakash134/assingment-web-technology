@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Analog Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .clock {
+            width: 300px;
+            height: 300px;
+            border: 10px solid #333;
+            border-radius: 50%;
+            position: relative;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .center-pin {
+            width: 15px;
+            height: 15px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        .hour-hand {
+            width: 8px;
+            height: 80px;
+            background-color: #333;
+        }
+
+        .minute-hand {
+            width: 6px;
+            height: 110px;
+            background-color: #555;
+        }
+
+        .second-hand {
+            width: 2px;
+            height: 130px;
+            background-color: #ff4500;
+        }
+
+        /* Correct radial positioning for the numbers */
+        .number-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .number {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centers the number initially */
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="hand hour-hand"></div>
+        <div class="hand minute-hand"></div>
+        <div class="hand second-hand"></div>
+        <div class="center-pin"></div>
+        
+        <div class="number-container"></div>
+    </div>
+    
+    <script>
+        // JavaScript to create and position the numbers and animate the hands
+        const numberContainer = document.querySelector('.number-container');
+        const clockRadius = 135; // Adjust this value to change the distance of the numbers from the center
+
+        for (let i = 1; i <= 12; i++) {
+            const numberDiv = document.createElement('div');
+            numberDiv.classList.add('number');
+            numberDiv.textContent = i;
+            
+            // Calculate the angle for each number
+            const angle = (i * 30) - 90; // Start at 12 o'clock, 30 degrees per number
+            const angleRad = angle * (Math.PI / 180);
+
+            // Calculate x and y coordinates on the circle
+            const x = clockRadius * Math.cos(angleRad);
+            const y = clockRadius * Math.sin(angleRad);
+            
+            numberDiv.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+            numberContainer.appendChild(numberDiv);
+        }
+
+        function updateAnalogClock() {
+            const now = new Date();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            const hourDegrees = (hours * 30) + (0.5 * minutes);
+            const minuteDegrees = (minutes * 6) + (0.1 * seconds);
+            const secondDegrees = seconds * 6;
+
+            const hourHand = document.querySelector('.hour-hand');
+            const minuteHand = document.querySelector('.minute-hand');
+            const secondHand = document.querySelector('.second-hand');
+
+            hourHand.style.transform = `translate(-50%, 0) rotate(${hourDegrees}deg)`;
+            minuteHand.style.transform = `translate(-50%, 0) rotate(${minuteDegrees}deg)`;
+            secondHand.style.transform = `translate(-50%, 0) rotate(${secondDegrees}deg)`;
+        }
+
+        setInterval(updateAnalogClock, 1000);
+        updateAnalogClock();
+    </script>
+</body>
+</html>
