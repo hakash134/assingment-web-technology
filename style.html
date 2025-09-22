@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brave Women of India</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .section-header {
+            color: #8B0000;
+            font-size: 2.5em;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 300px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('sai.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-text {
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1 id="page-title">Inspiring Women of India</h1>
+        <nav class="nav-menu">
+            <a href="#freedom-fighters">Freedom Fighters</a>
+            <a href="#successful-women">Successful Women</a>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-text">Celebrating the Courage and Success of Indian Women</div>
+    </div>
+
+    <section id="freedom-fighters">
+        <h2 class="section-header">Freedom Fighters of India</h2>
+        <div class="card-container">
+            <div class="card freedom-fighter-card">
+                <img src="velu.jpeg" alt="Rani Lakshmibai">
+                <h3 class="card-title">Velu Nachiyar</h3>
+                <p>The Queen of Sivagangai, she was a leading figure of the Indian Rebellion of 1857.</p>
+            </div>
+            
+            <div class="card freedom-fighter-card" id="sarojini-naidu">
+                <img src="ind1.jpeg" alt="Sarojini Naidu">
+                <h3 class="card-title">Indra Ghandhi</h3>
+                <p>Known as the "Iron lady of India," she was a poet and a political activist who was instrumental in the Civil Disobedience Movement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="successful-women">
+        <h2 class="section-header">Successful Women of India</h2>
+        <div class="card-container">
+            <div class="card successful-woman-card">
+                <img src="img1.jpg" alt="Kalpana Chawla">
+                <h3 class="card-title">Mariyamma</h3>
+                <p>The first woman of Indian origin to win gold in olympics. Her bravery and dedication inspire millions.</p>
+            </div>
+
+            <div class="card successful-woman-card" data-category="sports">
+                <img src="img2.jpg" alt="Mary Kom">
+                <h3 class="card-title">Susila patil</h3>
+                <p>First ever women pilot in india, she is a true symbol of determination.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer style="text-align: center; margin-top: 50px; padding: 20px; background-color: #f0f0f0; color: #333;">
+        <p>&copy; 2023 | A tribute to the great women of India</p>
+    </footer>
+
+</body>
+</html>
